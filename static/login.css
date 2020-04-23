@@ -1,0 +1,26 @@
+.welcome-error {
+  color: #660a88;
+  font-size: 30px;
+  width: fit-content;
+  margin: auto; }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 50px;
+  margin-right: 50px; }
+  form .form-control {
+    margin: 10px;
+    width: 400px; }
+
+@media (min-width: 992px) {
+  form .form-control {
+    margin: 10px;
+    width: 400px; } }
+@media (max-width: 992px) {
+  form .form-control {
+    margin: 10px;
+    width: 300px; } }
+
+/*# sourceMappingURL=login.css.map */

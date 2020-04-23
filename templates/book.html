@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{%block css%}
+<link rel="stylesheet" href="/static/book.css">
+{%endblock%}
+
+{%block body%}
+
+
+<div class="book-container-container">
+
+    <div class="book-container">
+
+        <div class="book">
+            <img src="http://covers.openlibrary.org/b/isbn/{{details["isbn"]}}-M.jpg" width="200px">
+        </div>
+
+
+        <div class="local">
+            <h1>
+                {{details["title"]}}
+            </h1>
+            <h4>
+                Author : - {{details["author"]}}
+            </h4>
+            <h4>
+                Published : - {{details["year"]}}
+            </h4>
+            <h4>
+                ISBN : - {{details["isbn"]}}
+            </h4>
+        </div>
+
+
+
+        <div class="goodreads">
+            <img src="/static/goodreads.jpg">
+            <h4>
+                average rating : - {{details["average_score"]}} / 5
+            </h4>
+            <h4>
+                total ratings : - {{details["review_count"]}}
+            </h4>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="form-container">
+    <form class="form" action="/book/{{details["isbn"]}}" method="POST">
+
+        <h1 class="error">{{error}}</h1>
+        <textarea class="form-control" type="text" name="comment"
+            placeholder="enter your review about this book"></textarea>
+        stars :
+        <select id="stars" name="stars">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<div class="comments-container">
+    <div class="comments">
+        {%for i in comments%}
+        <div class="comment card">
+            <h1>{{i[0]}}<span style="float: right; font-size: 20px;">{{i[2]*"⭐"}}</span></h1>
+            <h4>{{i[1]}}</h4>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}

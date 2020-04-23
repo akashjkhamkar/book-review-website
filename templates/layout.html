@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block css%}{%endblock%}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <title>project 1 : books</title>
+
+    <style>
+        html,
+        body {
+            text-justify: auto;
+            scroll-behavior: smooth;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+        }
+
+        .bg-custom {
+            background: white;
+            border-bottom: rgb(130, 0, 177) solid 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-custom">
+
+            {%if not session["user_id"]%}
+            <a class="navbar-brand" href="/"><span style="color:rgb(130, 0, 177)">Libro</span> - get all the reviews you
+                need !</a>
+            {%else%}
+            <a class="navbar-brand" href="/"><span style="color:rgb(130, 0, 177)">Search Books</span></a>
+            <a class="navbar-brand" href="/favourites"><span
+                    style="margin-left: 20px;color:rgb(130, 0, 177)">Favourites</span></a>
+            {%endif%}
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        {%if session["user_id"]%}
+                    <li>
+                        <a" class="nav-link" href="/login">{{session["username"]}}</a>
+                    </li>
+                    <li>
+                        <a style="color: rgb(102, 10, 136)" class="nav-link" href="/login">Log out</a>
+                    </li>
+                    </li>
+                    {%else%}
+                    <li>
+                        <a class="nav-link" href="/sign">Sign up</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    {%endif%}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div style="margin-top: 150px;">
+        {%block body%}
+
+        {%endblock%}
+    </div>
+</body>
+
+</html>

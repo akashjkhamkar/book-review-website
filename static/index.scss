@@ -1,0 +1,99 @@
+$big-sans:'Roboto',
+sans-serif;
+
+.welcome-error {
+    color: rgb(102, 10, 136);
+}
+
+.welcome {
+    font-size: 50px;
+}
+
+.search-container {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+
+    .form-control {
+        margin: auto;
+        width: 75%;
+    }
+}
+
+.search {
+    padding-top: 70px;
+    margin: auto;
+
+    .button {
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        padding: 10px;
+        background: rgb(130, 0, 177);
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+    }
+}
+
+.book-container {
+    margin-top: 50px;
+}
+
+.books {
+    padding-top: 50px;
+    border-top: rgba(85, 0, 141, 0.226) 1px solid;
+    margin: auto;
+    width: 60%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: baseline;
+
+    .book:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        background: rgb(130, 0, 177);
+
+        a {
+            text-decoration: none !important;
+            color: white !important;
+        }
+
+        .material-icons {
+            color: white;
+        }
+
+        .remove {
+            background: black !important;
+            color: blueviolet !important;
+        }
+    }
+
+    .footer-custom:hover {
+        background: rgb(255, 36, 36) !important;
+        .button{
+            color: white;
+        }
+    }
+    .footer-custom-purple:hover {
+        background: rgb(49, 0, 71) !important;
+        .button{
+            color: white;
+        }
+    }
+
+    .book {
+        a {
+            text-decoration: none !important;
+            color: black;
+        }
+
+        width: 12em;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.1s;
+    }
+}

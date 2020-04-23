@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{%block css%}
+<link rel="stylesheet" href="/static/index.css?ddsfsfdasdasddfds3">
+{%endblock%}
+
+{%block body%}
+
+
+
+<div class="search-container">
+    {%if data == " "%}
+    <h1 class="welcome-error">Please enter book details !</h1>
+    {%elif data == "*"%}
+    <h1 class="welcome-error">book not found !</h1>
+    {%else%}
+    <h1 class="welcome">Welcome <span style="color: rgb(130, 0, 177);">{{session.get("username")}} !</span></h1>
+    {%endif%}
+
+
+    <h3 class="title">Search any book , by its name , author or isbn number</h3>
+    <form action="/" method="POST" class="search">
+        <input type="text" class="form-control" style="border-color: rgba(105, 0, 143, 0.246);" name="search"
+            placeholder="for eg. Hex Hall or Rachel Hawkins or 1423121309"> <br>
+        <button class="button"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+
+<div class="book-container">
+    <div class="books">
+        {%for i in books%}
+        <div class="card  mb-3">
+            <div class="book card-body">
+                <a href="/book/{{i[1]}}">
+                    <h4 class="card-title">{{i[2]}}</h4>
+                    <h6 class="card-text">{{i[3]}}</h6>
+                    <h6 class="card-text">{{i[4]}}</h6>
+                    <h6 class="card-text">{{i[1]}}</h6>
+                </a>
+            </div>
+            <div class="card-footer footer-custom-purple">
+                <div style="width: fit-content; margin: auto;">
+                    <form action="/favourites" , method="POST">
+                        <input style="display: none;" type="text" name="new_fav" value="{{i[1]}}">
+                        <button class="button" style="background: transparent ; border: none;" class="button">
+                            Add to favourites
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}

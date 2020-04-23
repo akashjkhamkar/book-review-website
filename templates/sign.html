@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{%block css%}
+<link rel="stylesheet" href="/static/login.css"> {%endblock%}
+
+{%block body%}
+<div class="welcome-error">{{error}}</div>
+
+<div class="form">
+    <form action="sign" method="POST">
+        <h1>Sign up</h1>
+        
+        <input class="form-control" type="text" name="username" placeholder="username">
+        <input class="form-control" type="password" name="password" placeholder="password">
+        <input class="form-control" type="password" name="password2" placeholder="confirm password">
+        <button style="border:  rgb(130, 0, 177); background:  rgb(130, 0, 177); margin:auto;display : block"
+        class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+
+{%endblock%}

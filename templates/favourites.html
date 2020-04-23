@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{%block css%}
+<link rel="stylesheet" href="/static/index.css?54sddsfasddsfdasdsdfsd56asds">
+<style>
+    .welcome-error {
+    color: rgb(102, 10, 136);
+    font-size: 30px;
+    width: fit-content;
+    margin: auto;
+}
+</style>
+{%endblock%}
+{%block body%}
+
+<div class="welcome-error">{%if error == "*"%}
+    'You have not selected any favourite books yet !
+    {%elif error == "#"%}
+    Already added !
+    {%else%}
+    Favourites
+    {%endif%}
+</div>
+    <div class="book-container">
+        <div class="books">
+            {%for i in books%}
+            <div class="card  mb-3">
+                <div class="book card-body">
+                    <a href="/book/{{i[1]}}">
+                        <h4 class="card-title">{{i[2]}}</h4>
+                        <h6 class="card-text">{{i[3]}}</h6>
+                        <h6 class="card-text">{{i[4]}}</h6>
+                        <h6 class="card-text">{{i[1]}}</h6>
+                    </a>
+                </div>
+                <div class="card-footer footer-custom">
+                    <div style="width: fit-content; margin: auto;">
+                        <form action="/favourites_remove" , method="POST">
+                            <input style="display: none;" type="text" name="new_fav" value="{{i[1]}}">
+                            <button class="button" style="background: transparent ; border: none;" class="button">
+                                Remove
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    {%endblock%}

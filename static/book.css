@@ -1,0 +1,80 @@
+.error {
+  width: fit-content;
+  margin: auto;
+  color: #660a88;
+  padding-bottom: 20px; }
+
+.book-container-container {
+  padding-bottom: 50px;
+  border-bottom: rgba(85, 0, 141, 0.226) 1px solid; }
+  .book-container-container .book-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center; }
+    .book-container-container .book-container .book {
+      align-items: center; }
+    .book-container-container .book-container div {
+      margin-top: auto;
+      margin-bottom: auto;
+      display: flex;
+      flex-direction: column; }
+    .book-container-container .book-container .local {
+      width: 300px; }
+    .book-container-container .book-container .goodreads img, .book-container-container .book-container .local img {
+      width: 200px; }
+    .book-container-container .book-container .goodreads h2, .book-container-container .book-container .local h2 {
+      font-size: 28px; }
+    .book-container-container .book-container .goodreads h1, .book-container-container .book-container .local h1 {
+      font-size: 40px; }
+
+.form-container {
+  margin-top: 50px;
+  padding-bottom: 50px; }
+  .form-container .form {
+    width: 60%;
+    margin: auto; }
+    .form-container .form button {
+      margin-top: 10px;
+      background: #660a88;
+      border-color: #660a88; }
+
+.comments {
+  margin: auto;
+  width: 80%; }
+
+.card {
+  margin: 20px;
+  padding: 20px;
+  border: #8200b1 1px solid !important; }
+  .card h1 {
+    font-size: 28px; }
+  .card h4 {
+    font-size: 20px; }
+
+@media (max-width: 992px) {
+  .book-container-container .book-container {
+    align-content: center;
+    align-items: center; }
+    .book-container-container .book-container div {
+      margin-bottom: 50px; }
+      .book-container-container .book-container div h2 {
+        font-size: 20px; }
+      .book-container-container .book-container div h1 {
+        font-size: 30px; }
+    .book-container-container .book-container .local {
+      text-align: center; }
+    .book-container-container .book-container .goodreads img {
+      width: 200px; }
+    .book-container-container .book-container .goodreads h2 {
+      font-size: 20px; }
+
+  .comments-container .comments .card h1 {
+    font-size: 20px; }
+  .comments-container .comments .card h4 {
+    font-size: 15px; } }
+
+/*# sourceMappingURL=book.css.map */
