@@ -3,7 +3,10 @@ import csv , os , json
 
 from passlib.hash import sha256_crypt
 
+from os.path import join, dirname
+from dotenv import load_dotenv
 #import env variables from ".env" file 
+load_dotenv(join(dirname(__file__), '.env'))
 
 from flask import Flask, url_for , render_template , session , request , redirect , jsonify , abort
 from flask_session import Session
@@ -14,8 +17,8 @@ from helpers import login_required
 app = Flask(__name__)
 
 # Check for environment variable
-# if not os.getenv("DATABASE_URL"):
-#     raise RuntimeError("DATABASE_URL is not set")
+if not os.getenv("DATABASE_URL"):
+    raise RuntimeError("DATABASE_URL is not set")
 
 # Configure session to use filesystem
 app.config['JSON_SORT_KEYS'] = False
@@ -25,7 +28,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)    
 
 # Set up database
-engine = create_engine("postgres://sdhbtjazequyvv:bc3323b5df08aa61923daec22f353e5f67f461a8ae8bbc112797c44b7a31c3d5@ec2-52-71-85-210.compute-1.amazonaws.com:5432/deqej410gqthm3")
+engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
 
@@ -181,7 +184,7 @@ def fav():
 
         favs = db.execute("SELECT favourites FROM users WHERE id = :id" , {"id":session["user_id"]}).fetchone()
        
-        if favs!=None:
+        if favs[0]!=None:
             favs = list(favs[0])
             if new_fav in favs:
                 return render_template("favourites.html" , error="#")
@@ -190,13 +193,14 @@ def fav():
     
     books=[]
     fav = db.execute("SELECT favourites FROM users WHERE username=:username" , {"username":session["username"]}).fetchone()
-    print("##############################" , list(fav[0]))
-    fav = list(fav[0])
+    # print("##############################" , len(fav[0]) )
     error = "*"
-    if len(fav)!=0:
-        for i in fav:
-            books.append(db.execute("SELECT * FROM books WHERE isbn=:isbn" , {"isbn":str(i)}).fetchone())
-        error = " "
+    if fav[0]!=None :
+        if len(fav[0])!=0:
+            fav = list(fav[0])
+            for i in fav:
+                books.append(db.execute("SELECT * FROM books WHERE isbn=:isbn" , {"isbn":str(i)}).fetchone())
+            error = " "
     return render_template("favourites.html" , books = books , error=error)
 #--------------------------------------------------------------------------------------------------------------------------------
 @app.route("/favourites_remove" , methods=["POST"])
