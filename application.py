@@ -3,11 +3,7 @@ import csv , os , json
 
 from passlib.hash import sha256_crypt
 
-from os.path import join, dirname
-from dotenv import load_dotenv
-
 #import env variables from ".env" file 
-load_dotenv(join(dirname(__file__), '.env'))
 
 from flask import Flask, url_for , render_template , session , request , redirect , jsonify , abort
 from flask_session import Session
@@ -18,8 +14,8 @@ from helpers import login_required
 app = Flask(__name__)
 
 # Check for environment variable
-if not os.getenv("DATABASE_URL"):
-    raise RuntimeError("DATABASE_URL is not set")
+# if not os.getenv("DATABASE_URL"):
+#     raise RuntimeError("DATABASE_URL is not set")
 
 # Configure session to use filesystem
 app.config['JSON_SORT_KEYS'] = False
@@ -29,7 +25,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)    
 
 # Set up database
-engine = create_engine(os.getenv("DATABASE_URL"))
+engine = create_engine("postgres://sdhbtjazequyvv:bc3323b5df08aa61923daec22f353e5f67f461a8ae8bbc112797c44b7a31c3d5@ec2-52-71-85-210.compute-1.amazonaws.com:5432/deqej410gqthm3")
 db = scoped_session(sessionmaker(bind=engine))
 
 
