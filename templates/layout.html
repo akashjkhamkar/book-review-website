@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%block css%}{%endblock%}
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -37,6 +38,12 @@
             background: white;
             border-bottom: rgb(130, 0, 177) solid 1px;
         }
+
+        @media (min-width:992px) {
+            .navbar-brand {
+                font-size: 25px;
+            }
+        }
     </style>
 </head>
 
@@ -45,8 +52,11 @@
         <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-custom">
 
             {%if not session["user_id"]%}
-            <a class="navbar-brand" href="/"><span style="color:rgb(130, 0, 177)">Libro</span> - get all the reviews you
-                need !</a>
+            <a class="navbar-brand" href="/">
+                <span style=" font-family: 'Quicksand', sans-serif;font-weight: 300;display: inline ;color:rgb(130, 0, 177)">bookd</span> - get all
+                the reviews you
+                need !
+            </a>
             {%else%}
             <a class="navbar-brand" href="/"><span style="color:rgb(130, 0, 177)">Search Books</span></a>
             <a class="navbar-brand" href="/favourites"><span
