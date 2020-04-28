@@ -193,7 +193,6 @@ def fav():
     
     books=[]
     fav = db.execute("SELECT favourites FROM users WHERE username=:username" , {"username":session["username"]}).fetchone()
-    # print("##############################" , len(fav[0]) )
     error = "*"
     if fav[0]!=None :
         if len(fav[0])!=0:

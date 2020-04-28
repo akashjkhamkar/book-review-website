@@ -1,8 +1,8 @@
-# Project 1
-  
 
+# Project 1
 Web Programming with Python and JavaScript
 
+  
 
 Hi , this is my second submission to cs50 web ,  project 1 , i created a book review website using flask and postgresql  
 
@@ -12,10 +12,21 @@ Hi , this is my second submission to cs50 web ,  project 1 , i created a book re
 
 # Clone repository
 
-# Install all dependencies
+# 1 . Install all dependencies
 $ pip install -r requirements.txt
 
-# ENV Variables
+# 2 . Create Database 
+
+###  psql
+	tables 
+	
+	books :- contains all 5000 books from books.csv (id , isbn , title , author , year)
+
+	users :- ( username , password , favourites )
+
+	reviews :- (isbn , comment , user_id , stars)
+
+# 3. ENV Variables
 ### change the following values with your values in " .env " file
 FLASK_APP = application.py 
 DATABASE_URL = Postgres  URI  ***OR***  local Postgres db uri
@@ -72,16 +83,7 @@ returns json response , containing details for book of given isbn number
 	{
 	  "Error": "Invalid book ISBN"
 	}
-# Database 
 
-### 1 . psql
-	tables 
-	
-	books :- contains all 5000 books from books.csv (id , isbn , title , author , year)
-
-	users :- ( username , password , favourites )
-
-	reviews :- (isbn , comment , user_id , stars)
 	
 
 # Security 
